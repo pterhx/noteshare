@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @school.name %>
+  <h1><%= @school.name %></h1>
 </p>
 
-
-<%= link_to 'Edit', edit_school_path(@school) %> |
-<%= link_to 'Back', schools_path %>
+<h2> Courses: </h2>
+<% for course in @courses %>
+  <%= link_to course.name, course %>
+<% end %>
