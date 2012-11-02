@@ -1,15 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @course.name %>
-</p>
+<h1><%= @course.school.name %></h1>
+<h2><%= @course.name %></h2>
 
-<p>
-  <b>School:</b>
-  <%= @course.school_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<h3>Notes:</h3>
+<% if @notes.empty? %>
+  <p>No notes yet for this course!</p>
+<% else %>
+  <% for note in @notes %>
+    <%= link_to note.name, note %>
+  <% end %>
+<% end %>
