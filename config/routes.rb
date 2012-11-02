@@ -1,4 +1,10 @@
 Noteshare::Application.routes.draw do
+  resources :notes
+
+  resources :courses
+
+  resources :schools
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
