@@ -1,0 +1,5 @@
+<h1>Welcome to Note Share!</h1>
+<p>Find your school:</p>
+<% for school in @schools %>
+  <%= link_to school.name, schools_path %>
+<% end %>
