@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Title:</b>
   <%= @collab.title %>
@@ -8,6 +6,6 @@
 
 <p>
   <b>Course:</b>
-  <%= @collab.course_id %>
+  <%= @collab.course.name %>
 </p>
-<iframe src="https://docs.google.com/file/d/<%= @collab.file %>/preview" width="640" height="480"></iframe>
+<iframe src="https://docs.google.com/document/d/<%= @collab.file %>/edit" width="1000" height="600"></iframe>
