@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
     @schools = School.all
+    render :layout => 'home'
   end
   def signin
    scope = 'http://www.google.com/calendar/feeds/'
