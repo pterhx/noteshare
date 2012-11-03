@@ -4,7 +4,7 @@
 <h2><%= @course.name %></h2>
 <h3>Notes:</h3>
 <%= link_to 'Add Note',                                 
-            new_note_path(:course_id=> @course.id),                             
+            new_note_path(:course_id=> @course.id),
             :class => 'btn btn-primary' %> 
 <%= link_to 'Add Collaborative Note',                                 
             new_collab_path(:course_id=> @course.id),                             
@@ -20,6 +20,17 @@
     <span id=<%= "rating-span-" + note.id.to_s %>>
       <%= note.rating ? note.rating : 0 %>
     </span>
+    <ul>
+      <% for comment in note.comments %>
+        <li>
+        <%= Comment.find(comment).text %>
+        <br> - By <%= Comment.find(comment).user_id || 'anon' %>
+        </li>
+      <% end %>
+    </ul>
+      <%= link_to 'Add Comment',
+            new_comment_path(:note_id => note.id),
+            :class => 'btn btn-primary' %>
     <%= javascript_tag do %>
       $('#upvote-' + <%= note.id.to_s %>).click(function() {
         $('#rating-span-' + <%= note.id.to_s %>).text(
