@@ -92,3 +92,13 @@ div {
     list-style: square;
   }
 }
+#footer {
+  position:absolute;
+  bottom:0;
+   width:100%;
+   font-size: 20px;
+              height:50px;   /* Height of the footer */
+               background:#357EC7;
+               color: white;
+               padding: 20px;
+}
