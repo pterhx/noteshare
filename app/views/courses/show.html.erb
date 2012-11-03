@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @course.school.name %></h1>
+<div class="hero-unit"><h1><%= @course.school.name %></h1></div>
 <h2><%= @course.name %></h2>
-
+<%= link_to 'Add Note',                                 
+            new_note_path(:course_id=> @course.id),                             
+            :class => 'btn btn-primary' %> 
 <h3>Notes:</h3>
 <% if @notes.empty? %>
   <p>No notes yet for this course!</p>
 <% else %>
   <% for note in @notes %>
-    <p><%= link_to note.title, note %> </p>
+    <p> <a href="<%= note.filename %>"><%= note.title %></a> </p>
   <% end %>
 <% end %>
