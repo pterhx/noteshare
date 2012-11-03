@@ -13,6 +13,6 @@
 
   <%= f.input :title %>
   <%= f.hidden_field :course_id %>
-  <%= f.input :filename, {:as => :file, :label => " "} %>
+  <%= f.input :filename, {:as => :file, :label => false} %>
   <%= f.button :submit , :class => 'btn-primary'%>
 <% end %>

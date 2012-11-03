@@ -1,63 +1,24 @@
-<p id="notice"><%= notice %></p>
 <%= javascript_include_tag 'jquery-1.8.2' %>
-<div class="hero-unit"><h1><%= @course.school.name %></h1></div>
-<h2><%= @course.name %></h2>
-<h3>Notes:</h3>
-<%= link_to raw("<i class=icon-plus></i> Add Note"), new_note_path(:course_id=> @course.id),
-            :class => 'btn btn-primary' %> 
-            <%= link_to raw("<i class=icon-plus></i> Add Collaborative Note") ,
-            new_collab_path(:course_id=> @course.id), :class => 'btn btn-primary' %> 
-<% if @notes.empty? %>
-  <p>No notes yet for this course!</p>
-<% else %>
-  <% for note in @notes %>
-    <p>
-    <b><a href="<%= note.filename %>"><%= note.title %></a>
-      <%= link_to '+', '../notes/upvote/' + note.id.to_s,
-        :remote => true, :id => "upvote-" + note.id.to_s %>
-    <span id=<%= "rating-span-" + note.id.to_s %>>
-      <%= note.rating ? note.rating : 0 %>
-    </span>
-    <ul>
-      <% for comment in note.comments %>
-        <li>
-        <%= Comment.find(comment).text %>
-        <br> - By <%= Comment.find(comment).user_id || 'anon' %>
-        </li>
-      <% end %>
-    </ul>
-    <%= link_to raw("<i class=icon-plus></i> Add Comment"),
-            new_comment_path(:note_id => note.id),
-            :class => 'btn btn-primary' %>
-    <%= javascript_tag do %>
-      $('#upvote-' + <%= note.id.to_s %>).click(function() {
-        $('#rating-span-' + <%= note.id.to_s %>).text(
-          parseInt($('#rating-span-' + <%= note.id.to_s %>).text()) + 1);
-      });
-<div class="hero-unit"><h1><%= @course.name %></h1>
-<%= link_to 'Add Note',                                 
-            new_note_path(:course_id=> @course.id),
-            :class => 'btn btn-primary' %> 
-<%= link_to 'Add Collaborative Note',                                 
-            new_collab_path(:course_id=> @course.id),                             
-            :class => 'btn btn-primary' %> 
-</div>
-<div class="span4">
-  <h2 style="text-align: left;">Notes.</h2>
+<div class="hero-unit span10"><h1><%= @course.name %></h1></div>
+<div class="span5 well" style="background-color:#008080; ">
+  <%= link_to raw("<i class=icon-plus></i> Add Note"), 
+      new_note_path(:course_id=> @course.id),
+      :class => 'btn btn-primary' %> 
+  <h2 style="text-align: left;">Regular Notes.</h2>
   <% if @notes.empty? %>
     <p>No notes yet for this course!</p>
   <% else %>
     <% for note in @notes %>
       <p>
-      <b><a href="<%= note.filename %>"><%= note.title %></a>
         <%= link_to '+', '../notes/upvote/' + note.id.to_s,
           :remote => true, :id => "upvote-" + note.id.to_s %>
       <span id=<%= "rating-span-" + note.id.to_s %>>
         <%= note.rating ? note.rating : 0 %>
       </span>
+      <b><a href="<%= note.filename %>"> <%= note.title %></a>
       <ul>
         <% for comment in note.comments %>
-          <li>
+          <li style= "font-weight: 300;">
           <%= Comment.find(comment).text %>
           <br> - By <%= Comment.find(comment).user_id || 'anon' %>
           </li>
@@ -77,16 +38,15 @@
     <% end %>
   <% end %>
 </div>
-<div class="span4">
+<div class="span5 well", style="background-color:#C12267;">
+  <%= link_to raw("<i class=icon-plus></i> Start Collaborative") ,
+  new_collab_path(:course_id=> @course.id), :class => 'btn btn-primary', :html => "style='background-color: pink;'" %> 
   <h2 style="text-align: left;">Collaborative Notes.</h2>
   <% if @collabs.empty? %>
     <p> No collaborative notes yet for this course! </p>
   <% else %>
     <% for collab in @collabs %>
-      <%= link_to collab.title, collab %>
+      <p><%= link_to collab.title, collab %></p>
     <% end %>
   <% end %>
-<<<<<<< HEAD
-<% end %>
-=======
 </div>

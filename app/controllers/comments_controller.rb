@@ -26,10 +26,7 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
     @comment.note_id = params[:note_id]
-    @comment.save
     note = Note.find(params[:note_id])
-    note.comments.push(@comment)
-    note.save
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,7 +46,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to course_path(@comment.note.course), notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }
