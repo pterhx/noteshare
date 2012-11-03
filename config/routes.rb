@@ -1,6 +1,9 @@
 Noteshare::Application.routes.draw do
   get "home/index"
   match '/notes/createCollab', :to => 'notes#createCollab'
+
+  match '/notes/upvote/:id' => 'notes#upvote'
+
   resources :notes
 
   resources :courses

@@ -90,4 +90,12 @@ class NotesController < ApplicationController
     File.new("ROFL.txt", "w")
     insert_file(@client, "LOL", "CATS",nil, 'text/plain', 'ROFL.txt' )
   end
+
+  def upvote
+    @note = Note.find(params[:id])
+    @note.rating = @note.rating ? @note.rating + 1 : 1
+    @note.save
+    redirect_to :back
+  end
+
 end

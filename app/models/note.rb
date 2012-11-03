@@ -4,4 +4,5 @@ class Note < ActiveRecord::Base
   belongs_to :course
   
   mount_uploader :filename, FileUploader
+
 end
