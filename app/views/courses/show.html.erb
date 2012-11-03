@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= javascript_include_tag 'jquery-1.8.2' %>
 <div class="hero-unit"><h1><%= @course.school.name %></h1></div>
 <h2><%= @course.name %></h2>
 <%= link_to 'Add Note',                                 
@@ -10,6 +10,20 @@
   <p>No notes yet for this course!</p>
 <% else %>
   <% for note in @notes %>
-    <p> <a href="<%= note.filename %>"><%= note.title %></a> </p>
+    <p>
+    <a href="<%= note.filename %>"><%= note.title %></a>
+    <%= link_to 'upvote', '../notes/upvote/' + note.id.to_s,
+      :remote => true, :id => "upvote-" + note.id.to_s %>
+    <span id=<%= "rating-span-" + note.id.to_s %>>
+      <%= note.rating ? note.rating : 0 %>
+    </span>
+    <%= javascript_tag do %>
+      $('#upvote-' + <%= note.id.to_s %>).click(function() {
+        $('#rating-span-' + <%= note.id.to_s %>).text(
+          parseInt($('#rating-span-' + <%= note.id.to_s %>).text()) + 1);
+      });
+    <% end %>
+    </script>
+    </p>
   <% end %>
 <% end %>

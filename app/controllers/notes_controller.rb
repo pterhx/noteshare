@@ -80,4 +80,12 @@ class NotesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def upvote
+    @note = Note.find(params[:id])
+    @note.rating = @note.rating ? @note.rating + 1 : 1
+    @note.save
+    redirect_to :back
+  end
+
 end
