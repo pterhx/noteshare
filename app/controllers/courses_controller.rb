@@ -15,6 +15,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @notes = @course.notes
+    @collabs = @course.collabs
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @course }

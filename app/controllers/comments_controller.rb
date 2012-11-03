@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     @comment.note_id = params[:note_id]
     @comment.save
     note = Note.find(params[:note_id])
-    note.comments.push(@comment.id)
+    note.comments.push(@comment)
     note.save
 
     respond_to do |format|
