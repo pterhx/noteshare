@@ -80,4 +80,14 @@ class NotesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def createCollab
+    setup_client
+    if @uri
+      redirect_to @uri.to_s
+      return
+    end
+    File.new("ROFL.txt", "w")
+    insert_file(@client, "LOL", "CATS",nil, 'text/plain', 'ROFL.txt' )
+  end
 end
