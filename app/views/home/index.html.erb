@@ -1,5 +1,8 @@
-<h1>Welcome to Note Share!</h1>
-<h2>Find your school:</h2>
-<% for school in @schools %>
-  <%= link_to school.name, school %>
-<% end %>
+<div style="font-family: 'Helvetica Neue'; background-color: #357EC7; height: 250px; color:white; padding: 60px;">
+  <h1 style="font-size: 96px;">Noteshare</h1>
+  <h3>Collaborative note taking; Resource sharing.</h3>
+  <br><br>
+    <% for school in @schools %>
+      <h3><%= link_to school.name, school %> </h3>
+    <% end %>
+</div>

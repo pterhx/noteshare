@@ -3,18 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 h1 {
 
-font: bold italic 4em/1em "Times New Roman", "MS Serif", "New York", serif;
-
-margin: 0;
-
-padding: 0;
-
-border-top: solid #4C5D5E medium;
-
-border-bottom: dotted #4C5D5E thin;
-
-width: 600px;
-
-text-align: center
+  font-family: "Helvetica Neue", "New York", serif;
+  margin: 0;
+  padding-bottom: 40px;
+  text-align: center;
+  font-weight: 900;
+  
+}
+h3 {
+  font-weight: 300;
+  margin: 0;
+  text-align: center;
+  padding-left: 15px;
 }
 
