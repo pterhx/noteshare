@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :score
 
