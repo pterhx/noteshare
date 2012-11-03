@@ -1,24 +1,41 @@
 body {
   background-color: #FFF;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  color: #000;
+  font-family: 'helvetica neue', sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
-
+.hero-unit {
+  background-color: #488AC7;
+}
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'helvetica neue', sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
-
+h1 {
+  text-align: left;
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+a {
+  color: #fff;
+  font-size: 15px;
+}
+h2 {
+  text-align: left;
+  font-family: verdana, arial, helvetica, sans-serif;
+}
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
 }
 
-a {
+h3 > a {
   color: #FFF;
   &:visited {
     color: #FFF;
@@ -27,6 +44,7 @@ a {
     color: #fff;
     text-decoration: none;
   }
+  font-size: 26px;
 }
 
 div {

@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
-<p>
+<br>
+<div class="hero-unit">
   <h1><%= @school.name %></h1>
-</p>
+  <h3 style="text-align: left;">Courses.</h3>
 
-<h2> Courses: </h2>
-<% for course in @courses %>
-  <%= link_to course.name, course %>
-<% end %>
+  <% for course in @courses %>
+    <p style="color: white;"><%= link_to course.name, course %></p>
+  <% end %>
+  <p>End.</p>
+</div>
+
