@@ -1,4 +1,6 @@
 Noteshare::Application.routes.draw do
+  get "users/new"
+
   resources :collabs
 
   get "home/index"
@@ -12,6 +14,8 @@ Noteshare::Application.routes.draw do
   resources :schools
 
   resources :comments
+  resources :users
+  resources :sessions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -65,13 +69,16 @@ Noteshare::Application.routes.draw do
   root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
-  
+
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
-  match "/signin" => "home#signin"
-  get   '/login', :to => 'sessions#new', :as => :login
+  match '/log_out' => 'sessions#destroy', :as => :log_out
+  get   '/log_in', :to => 'sessions#new', :as => :log_in
+  get   '/sign_up', :to => 'users#new', :as => :sign_up
+  root :to => 'users#new'
+
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/failure', :to => 'sessions#failure'
 end
