@@ -1,0 +1,27 @@
+<h1>Listing collabs</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>File</th>
+    <th>Course</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @collabs.each do |collab| %>
+  <tr>
+    <td><%= collab.title %></td>
+    <td><%= collab.file %></td>
+    <td><%= collab.course_id %></td>
+    <td><%= link_to 'Show', collab %></td>
+    <td><%= link_to 'Edit', edit_collab_path(collab) %></td>
+    <td><%= link_to 'Destroy', collab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Collab', new_collab_path %>

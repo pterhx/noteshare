@@ -3,4 +3,5 @@ class Course < ActiveRecord::Base
   # Relationships
   belongs_to :school
   has_many :notes
+  has_many :collabs
 end

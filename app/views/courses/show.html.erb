@@ -2,10 +2,13 @@
 <%= javascript_include_tag 'jquery-1.8.2' %>
 <div class="hero-unit"><h1><%= @course.school.name %></h1></div>
 <h2><%= @course.name %></h2>
+<h3>Notes:</h3>
 <%= link_to 'Add Note',                                 
             new_note_path(:course_id=> @course.id),                             
             :class => 'btn btn-primary' %> 
-<h3>Notes:</h3>
+<%= link_to 'Add Collaborative Note',                                 
+            new_collab_path(:course_id=> @course.id),                             
+            :class => 'btn btn-primary' %> 
 <% if @notes.empty? %>
   <p>No notes yet for this course!</p>
 <% else %>
@@ -25,5 +28,13 @@
     <% end %>
     </script>
     </p>
+  <% end %>
+<% end %>
+
+<% if @collabs.empty? %>
+  <p> No collaborative notes yet for this course! </p>
+<% else %>
+  <% for collab in @collabs %>
+    <%= link_to collab.title, collab %>
   <% end %>
 <% end %>
