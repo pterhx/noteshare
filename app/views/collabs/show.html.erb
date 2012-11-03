@@ -1,11 +1,4 @@
-<p>
-  <b>Title:</b>
-  <%= @collab.title %>
-</p>
-
-
-<p>
-  <b>Course:</b>
+<h3 style="text-align: right; padding-right: 35px; ">
   <%= @collab.course.name %>
-</p>
-<iframe src="https://docs.google.com/document/d/<%= @collab.file %>/edit" width="1000" height="600"></iframe>
+</h3>
+<iframe src="https://docs.google.com/document/d/<%= @collab.file %>/edit" seamless="seamless" width="100%" height="1000"></iframe>
