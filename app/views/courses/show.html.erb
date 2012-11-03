@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
 <%= javascript_include_tag 'jquery-1.8.2' %>
-<div class="hero-unit"><h1><%= @course.school.name %></h1></div>
-<h2><%= @course.name %></h2>
+<div class="hero-unit"><h1><%= @course.name %></h1>
 <h3>Notes:</h3>
 <%= link_to 'Add Note',                                 
             new_note_path(:course_id=> @course.id),
@@ -49,3 +47,4 @@
     <%= link_to collab.title, collab %>
   <% end %>
 <% end %>
+</div>
