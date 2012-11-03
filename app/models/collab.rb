@@ -20,27 +20,23 @@ class Collab < ActiveRecord::Base
     client.authorization.refresh_token = '1/Y0dnkJsq4GqyYHolx8R8D-jxfl2RF993AWTp4btv_Xs'
     client.authorization.fetch_access_token!
     drive = client.discovered_api('drive', 'v2')
-
-    file = drive.files.insert.request_schema.new({
-      'title' => self.title, 
-      'description' => "collaborative note",
-      'mimeType' => "application/msword"
-    })
-    File.new("ROFL.doc", "r")
-    media = Google::APIClient::UploadIO.new("ROFL.doc", "application/msword")
+    copied_file = drive.files.copy.request_schema.new({
+        'title' => self.title 
+      })
     result = client.execute(
-      :api_method => drive.files.insert,
-      :body_object => file,
-      :media => media,
-      :parameters => {
-        'uploadType' => 'multipart',
-        'alt' => 'json'})
-    if result.status == 200
-      self.file = result.data.id
-    else
-      puts "An error occurred: #{result.data['error']['message']}"
-      return nil
-    end
+      :api_method => drive.files.copy,
+      :body_object => copied_file,
+      :parameters => { 'fileId' => "1ElOgWlwmYa2tYGu7mdYn0U-6CHBEYwrQFm6eU8kzJkw",
+                       'convert' => 'true'})
+    self.file = result.data.id
+    new_permission = drive.permissions.insert.request_schema.new({
+    'value' => "me",
+    'type' => "anyone",
+    'role' => "writer" 
+    })
+    result = client.execute(
+      :api_method => drive.permissions.insert,
+      :body_object => new_permission,
+      :parameters => { 'fileId' => self.file })
   end
-
 end
