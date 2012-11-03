@@ -15,6 +15,12 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @notes = @course.notes
+    for note in @notes
+      note.comments = note.comments.select { |comment|
+        comment.text && !comment.text.strip.eql?("")
+      }
+      note.save
+    end
     @collabs = @course.collabs
     respond_to do |format|
       format.html # show.html.erb

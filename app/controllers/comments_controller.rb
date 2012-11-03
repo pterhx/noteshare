@@ -43,6 +43,10 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(params[:comment])
+    if !current_user.nil?
+      @comment.user_id = current_user.id
+      #current_user.comments.push(@comment)
+    end
 
     respond_to do |format|
       if @comment.save
