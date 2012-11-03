@@ -8,6 +8,6 @@
   <p>No notes yet for this course!</p>
 <% else %>
   <% for note in @notes %>
-    <%= link_to note.name, note %>
+    <p><%= link_to note.title, note %> </p>
   <% end %>
 <% end %>
