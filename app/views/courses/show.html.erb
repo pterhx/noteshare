@@ -14,9 +14,9 @@
 <% else %>
   <% for note in @notes %>
     <p>
-    <a href="<%= note.filename %>"><%= note.title %></a>
-    <%= link_to 'upvote', '../notes/upvote/' + note.id.to_s,
-      :remote => true, :id => "upvote-" + note.id.to_s %>
+    <b><a href="<%= note.filename %>"><%= note.title %></a>
+      <%= link_to '+', '../notes/upvote/' + note.id.to_s,
+        :remote => true, :id => "upvote-" + note.id.to_s %>
     <span id=<%= "rating-span-" + note.id.to_s %>>
       <%= note.rating ? note.rating : 0 %>
     </span>
