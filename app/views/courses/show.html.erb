@@ -19,8 +19,8 @@
       <ul>
         <% for comment in note.comments %>
           <li style= "font-weight: 300;">
-          <%= Comment.find(comment).text %>
-          <br> - By <%= Comment.find(comment).user_id || 'anon' %>
+          <%= comment.text %>
+          <br> - By <%= comment.user && comment.user.email || 'anon' %>
           </li>
         <% end %>
       </ul>
